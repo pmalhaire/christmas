@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import sys
 import os
-import time
 
 
 def get_from_stdin(ncols, nrows):
