@@ -15,7 +15,13 @@ void write_screen(uint8_t* lines,const int color)                               
      
   for ( j = 0; j < 8; j++)
   {
-    data[color] = ~lines[j];    // set color 
+    if (color == 4 ) {
+      data[0] = ~lines[j];
+      data[1] = ~lines[j];
+      data[2] = ~lines[j];
+    } else {
+      data[color] = ~lines[j];    // set color 
+    }
     data[3] = 0x01 << j ;    // display the data on matrix.
     digitalWrite(CE, LOW);     // when CE is low, it begin to receive data.
     SPI.transfer(data[0]);         //transfer data[0] to the matrix(red)
@@ -25,7 +31,7 @@ void write_screen(uint8_t* lines,const int color)                               
     digitalWrite(CE, HIGH);    // when CE is High, means that matrix begin to display the array's information to the matrix.
     delay(LINE_DELAY);                          // a little bit delay, let the led light up and stay for a while so that it looks like it brightness.
   }
-};
+}
 
 void matrixoff()
 {
@@ -44,13 +50,13 @@ void matrixoff()
     digitalWrite(CE, HIGH);
     delay(LINE_DELAY);
   }
-};
+}
 
 void heartbig()                                                  // defined a function called "heart big".
 {                                                                 
   static uint8_t heart[8] = {0x00, 0x66, 0xFF, 0xFF, 0xFF, 0x7E, 0x3C, 0x18};    // you need to calculate which led should be light up by this array, it defined line by line on your matrix, for example , 0x00 means the led of the first line is off,  and the 0x66 means the second line's first led will go off and the fourth led will go off and fifth led will go off and eight led will go off. others will turn on....and so on.
   write_screen(heart,2);
-};
+}
 
 
 
@@ -58,7 +64,7 @@ void heartsmall()
 {
   static uint8_t heart[8] = {0x00, 0x00, 0x24, 0x7E, 0x7E, 0x3C, 0x18, 0x00};          // change the hard to be the smaller one, all you need to do is change this parameter.
   write_screen(heart,1);
-};
+}
 
 void tree(int color)
 {
@@ -74,7 +80,17 @@ void tree(int color)
   // 00011000
   static uint8_t tree[8] = {0x20, 0x34, 0x3E, 0xFF, 0xFF, 0x3E, 0x34, 0x20};          // change the hard to be the smaller one, all you need to do is change this parameter.
   write_screen(tree,color);
-};
+}
+
+void snow(int color){
+  static uint8_t snow[8] = {0x81,0x24,0x66,0x18,0x18,0x66,0x24,0x81};
+  write_screen(snow,color);
+}
+
+void cross(int color){
+  static uint8_t cross[8] = {0x04,0x0a,0x02,0x04,0x08,0x10,0x20,0x40};
+  write_screen(cross,color);
+}
 
 
 void setup() {
@@ -93,8 +109,18 @@ void loop()                                                  //defined a loop fu
   };
   matrixoff();                                          
   delay(OFF_TIME);
+    for ( m = PRINT_TIME; m > 0; m--) {
+    cross(0);
+  };
+  matrixoff();                                          
+  delay(OFF_TIME);
   for ( m = PRINT_TIME; m > 0; m--) {
     tree(1);
+  };
+  matrixoff();
+  delay(OFF_TIME);
+    for ( m = PRINT_TIME; m > 0; m--) {
+    snow(4);
   };
   matrixoff();
   delay(OFF_TIME);

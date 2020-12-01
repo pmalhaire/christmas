@@ -57,6 +57,8 @@ def plot(image, pause=None):
     row_labels = range(nrows)
     col_labels = range(ncols)
     plt.matshow(image)
+    # use black and white colors
+    plt.set_cmap('Greys')
     plt.xticks(range(ncols), col_labels)
     plt.yticks(range(nrows), row_labels)
     if pause:
@@ -100,4 +102,9 @@ def plotdir(path):
 if __name__ == "__main__":
     # image = get_from_stdin(ncols, nrows)
     # plot(image)
+    if len(sys.argv) == 2:
+        filename = sys.argv[1]
+        image = readfile(filename, 8, 8)
+        print(f'file:{filename}')
+        plot(image)
     plotdir('.')
