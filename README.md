@@ -15,11 +15,14 @@ To put it your arduino first plug your arduino as here :
 
 Note MISO is not used so don't plug it
 
+TODO create my own file
+
 ![plug](http://lab.dejaworks.com/wp-content/uploads/2016/08/Arduino-Nano-SD-Card-Connection.png)
 
 ## arduino code
 
 run the following
+
 ```
 arduino christmas.ino
 ```
@@ -42,7 +45,7 @@ run the script
 python draw.py
 ```
 
-TODO add screeshot
+TODO add screenshot
 
 ## Generate new paterns
 
