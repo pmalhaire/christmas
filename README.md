@@ -25,7 +25,7 @@ arduino christmas.ino
 
 ## result
 
-TODO add gif
+![christmas](christmas.gif)
 
 ## see patern examples
 
