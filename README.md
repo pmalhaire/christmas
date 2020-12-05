@@ -17,11 +17,25 @@ To put it your arduino first plug your arduino as follows :
 
 ## arduino code
 
+clone the project
+
+```
+git clone https://github.com/pmalhaire/christmas.git
+cd christmas
+```
+
+install the arduino software if not done.
+
+https://www.arduino.cc/en/Guide
+
+
 run the following
 
 ```
 arduino christmas.ino
 ```
+
+upload the project to your arduino
 
 ## result
 
@@ -64,3 +78,5 @@ ex:
 ```
 {0x81,0x24,0x66,0x18,0x18,0x66,0x24,0x81}
 ```
+
+MERRY CHRISTMAS !
