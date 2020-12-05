@@ -93,7 +93,11 @@ def readfile(filename, ncols, nrows):
 def plotdir(path):
     for file in os.scandir(path):
         if file.is_file() and file.name.endswith('.txt'):
-            image = readfile(file.name, 8, 8)
+            try:
+                image = readfile(file.name, 8, 8)
+            except Exception as e:
+                print(f'file:{file.name} is not readable error:{e}')
+                continue
             print(f'file:{file.name}')
             plot(image, pause=1)
 

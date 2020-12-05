@@ -11,13 +11,9 @@ For this project you'll need :
 
 ## arduino plug
 
-To put it your arduino first plug your arduino as here :
+To put it your arduino first plug your arduino as follows :
 
-Note MISO is not used so don't plug it
-
-TODO create my own file
-
-![plug](http://lab.dejaworks.com/wp-content/uploads/2016/08/Arduino-Nano-SD-Card-Connection.png)
+![plug](wiring.jpg)
 
 ## arduino code
 
@@ -39,13 +35,20 @@ install deps :
 pip install -r requierements.txt
 ```
 
-run the script
+run the script for one drawing (here snow4.txt)
+
+```
+python draw.py snow4.txt
+```
+
+![snow](snow4.png)
+
+
+show all .txt drawing
 
 ```
 python draw.py
 ```
-
-TODO add screenshot
 
 ## Generate new paterns
 
@@ -53,4 +56,11 @@ You can add new paterns and visualise it with python
 
 1. create `my_object.txt` file in the repo folder
 2. fill it with 1 and 0 with 8 lines of 8 bits (don't forget to add an empty line at the end)
-3. show the result with
+3. show the result with `python draw my_object.txt`
+
+The console log with show the hex values to be used in the christmas.ino
+
+ex:
+```
+{0x81,0x24,0x66,0x18,0x18,0x66,0x24,0x81}
+```
